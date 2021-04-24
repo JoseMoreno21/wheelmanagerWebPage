@@ -29,7 +29,7 @@ public class VehicleTypeController {
     private ModelMapper mapper;
 
     @GetMapping("/vehicletypes")
-    public Page<VehicleTypeResource> getAllBrands(Pageable pageable){
+    public Page<VehicleTypeResource> getAllVehicleTypes(Pageable pageable){
         Page<VehicleType>  vehicleTypesPage = vehicleTypeService.getAllVehicleTypes(pageable);
         List<VehicleTypeResource> resources = vehicleTypesPage.getContent()
                 .stream().map(this::convertToResource)
@@ -38,7 +38,7 @@ public class VehicleTypeController {
     }
 
     @GetMapping("/vehicletypes/{vehicleTypeId}")
-    public VehicleTypeResource getVehicleById(@PathVariable(value = "vehicletypeId")Long vehicleTypeId){
+    public VehicleTypeResource getVehicleTypeById(@PathVariable(value = "vehicletypeId")Long vehicleTypeId){
         return convertToResource(vehicleTypeService.getVehicleTypeById(vehicleTypeId));
     }
 
