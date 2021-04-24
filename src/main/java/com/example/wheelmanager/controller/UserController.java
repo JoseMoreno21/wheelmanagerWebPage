@@ -1,12 +1,8 @@
 package com.example.wheelmanager.controller;
 
-import com.example.wheelmanager.domain.model.Status;
 import com.example.wheelmanager.domain.model.User;
-import com.example.wheelmanager.domain.service.StatusService;
 import com.example.wheelmanager.domain.service.UserService;
-import com.example.wheelmanager.resource.SaveStatusResource;
 import com.example.wheelmanager.resource.SaveUserResource;
-import com.example.wheelmanager.resource.StatusResource;
 import com.example.wheelmanager.resource.UserResource;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
@@ -47,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public UserResource createStatus(
+    public UserResource createUser(
             @Valid @RequestBody SaveUserResource resource) {
         User user = convertToEntity(resource);
         return convertToResource(userService.createUser(user));
@@ -55,7 +51,7 @@ public class UserController {
     }
 
     @PutMapping("/users/{userId}")
-    public UserResource updateStatus(@PathVariable Long userId,
+    public UserResource updateUser(@PathVariable Long userId,
                                        @Valid @RequestBody SaveUserResource resource) {
         User user = convertToEntity(resource);
         return convertToResource(
